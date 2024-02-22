@@ -220,15 +220,27 @@ public final class BuilderProcess extends BaritoneProcessHelper implements IBuil
         if (LitematicaHelper.isLitematicaPresent()) {
             //if java.lang.NoSuchMethodError is thrown see comment in SchematicPlacementManager
             if (LitematicaHelper.hasLoadedSchematic()) {
+                logDirect("LitematicaHelper.hasLoadedSchematic()");
                 String name = LitematicaHelper.getName(i);
+                logDirect("LitematicaHelper.getName(i)");
+                logDirect("LitematicaHelper.getName(i):" + name);
                 try {
+                    logDirect("LitematicaHelper.getSchematicFile(i).toPath()");
+                    logDirect("LitematicaHelper.getSchematicFile(i).toPath(): " + LitematicaHelper.getSchematicFile(i).toPath());
                     LitematicaSchematic schematic1 = new LitematicaSchematic(NbtIo.readCompressed(Files.newInputStream(LitematicaHelper.getSchematicFile(i).toPath())), false);
+                    logDirect("new LitematicaSchematic(NbtIo.readCompressed(Files.newInputStream(LitematicaHelper.getSchematicFile(i).toPath())), false);");
                     Vec3i correctedOrigin = LitematicaHelper.getCorrectedOrigin(schematic1, i);
+                    logDirect("LitematicaHelper.getCorrectedOrigin(schematic1, i)");
                     ISchematic schematic2 = LitematicaHelper.blackMagicFuckery(schematic1, i);
+                    logDirect("LitematicaHelper.blackMagicFuckery(schematic1, i)");
                     schematic2 = applyMapArtAndSelection(origin, (IStaticSchematic) schematic2);
+                    logDirect("applyMapArtAndSelection(origin, (IStaticSchematic) schematic2)");
                     build(name, schematic2, correctedOrigin);
+                    logDirect("build(name, schematic2, correctedOrigin)");
                 } catch (Exception e) {
                     logDirect("Schematic File could not be loaded.");
+                    e.printStackTrace();
+                    logDirect("Schematic File could not be loaded." + e.toString);
                 }
             } else {
                 logDirect("No schematic currently loaded");
