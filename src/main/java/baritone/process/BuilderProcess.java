@@ -239,7 +239,7 @@ public final class BuilderProcess extends BaritoneProcessHelper implements IBuil
                     logDirect("build(name, schematic2, correctedOrigin)");
                 } catch (Exception e) {
                     logDirect("Schematic File could not be loaded.");
-                    e.printStackTrace();
+                    e.printStackTrace(); 
                     logDirect("Schematic File could not be loaded." + e.toString);
                 }
             } else {
