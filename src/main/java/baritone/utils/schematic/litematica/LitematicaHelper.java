@@ -108,10 +108,15 @@ public final class LitematicaHelper {
         int mz = schematic.getOffsetMinCorner().getZ();
         int sx = (schematic.getX() - 1) * -1;
         int sz = (schematic.getZ() - 1) * -1;
+        logDirect("getCorrectedOrigin: (x,y,z): (" + x + ", " + y + ", " + z + ");");
+        logDirect("getCorrectedOrigin: (mx,my,mz): (" + mx + ", " + my + ", " + mz + ");");
+        logDirect("getCorrectedOrigin: (sx,sz): (" + sx + ", " + sz + ");");
 
         Vec3i correctedOrigin;
         Mirror mirror = LitematicaHelper.getMirror(i);
         Rotation rotation = LitematicaHelper.getRotation(i);
+
+        logDirect("mirror: " + mirror.ordinal + ", rotation: " + rotation.ordinal );
 
         //todo there has to be a better way to do this but i cant finde it atm
         switch (mirror) {
